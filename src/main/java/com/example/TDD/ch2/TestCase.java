@@ -10,9 +10,8 @@ public class TestCase {
         this.name = name;
     }
 
-    public TestResult run() {
+    public void run(TestResult result) {
 
-        TestResult result = new TestResult();
         result.testStarted();
 
         setUp();
@@ -23,9 +22,7 @@ public class TestCase {
         } catch (Exception e) {
             result.testFailed();
         }
-
         tearDown();
-        return result;
     }
 
     public void tearDown() {
