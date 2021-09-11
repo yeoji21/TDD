@@ -2,14 +2,16 @@ package com.example.TDD.ch2;
 
 public class XUnitTest {
     public static void main(String[] args) {
-
+        TestSuite suite = TestCaseTest.suite();
         TestResult result = new TestResult();
-        new TestCaseTest("testTemplateMethod").run(result);
-        new TestCaseTest("testResult").run(result);
-        new TestCaseTest("testFailedResultFormatting").run(result);
-        new TestCaseTest("testFailedResult").run(result);
-        new TestCaseTest("testSuite").run(result);
-        System.out.println(result.getSummary());
+        suite.run(result);
+
+        TestSuite suite2 = new TestSuite();
+        suite2.add(new TestCaseTest("testTemplateMethod"));
+        suite2.add(suite);
+        TestResult result2 = new TestResult();
+        suite2.run(result2);
+        System.out.println(result2.getSummary());
 
     }
 }
